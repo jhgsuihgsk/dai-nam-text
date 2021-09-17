@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<iostream>
+using namespace std;
+
+int top = -1;
+int size = 10;
+
+void check(char str[], char stack [])
+{
+	for(int i=0;i<strlen(str);i++)
+	{
+		if(str[i]=='(')
+		{
+			top++;
+			stack[top] = ')';
+		}
+		if(str[i]==')')
+		{
+			if(top==-1)
+			{
+				top = top - 99;
+				break;
+			}
+			else
+			{
+				top = top - 1;
+			}
+		}
+	}
+	if(top==-1)
+	{
+		cout<<"ok";
+	}
+	else
+	{
+		cout<<"not ok";
+	}
+}
+
+int main()
+{
+	char stack[size];
+	char str[] = "()()";
+	check(str,stack);
+	return 0;
+}
